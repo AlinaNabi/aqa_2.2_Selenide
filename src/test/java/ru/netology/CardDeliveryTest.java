@@ -1,22 +1,31 @@
 package ru.netology;
 
-import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Keys;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class CardDeliveryTest {
 
     @Test
     void shouldEnteringInformationForCardDelivery() {
-       Selenide.open("http://localhost:9999/");
-       $("").setValue("");
-       $("").setValue("");
-       $("").setValue("Мария Адамова");
-       $("").setValue("+79991110022");
-       $("").click();
-       $("").click();
+        open("http://localhost:9999/");
+        $("[class='input__control'][placeholder='Город']").setValue("Москва");
+        String date = LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        $("[placeholder='Дата встречи']").doubleClick().sendKeys(Keys.BACK_SPACE);
+        $("[data-test-id='date']  input").setValue(date);
+        $("[name='name']").setValue("Анна Адамова");
+        $("[name='phone']").setValue("+79991110022");
+        $("[class='checkbox__box']").click();
+        $("button").click();
 
+        $("data-test-id='notification").shouldHave(text("Встреча успешно забронирована"), Duration.ofSeconds(10));
 
 
     }
