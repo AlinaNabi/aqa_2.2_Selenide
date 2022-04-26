@@ -26,7 +26,7 @@ public class CardDeliveryTest {
         $("[class='checkbox__box']").click();
         $("button").click();
 
-        $("[notification__title]").shouldHave(text("Успешно"), Duration.ofSeconds(15));
+        $("[class='notification__title']").shouldHave(text("Успешно"), Duration.ofSeconds(15));
         $(".notification__content").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("Встреча успешно забронирована"));
         $("").click();
     }
