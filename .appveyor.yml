@@ -14,4 +14,6 @@ install:
 
 build_script:
   - chmod +x gradlew
-  - ./gradlew test --info  # запускаем тест, флаг --info позволяет выводить больше информации
+  #Для selenide headless режим активируется при запуске тестов с определенным параметром:
+  - ./gradlew test -Dselenide.headless=true --info
+ # - ./gradlew test --info  # запускаем тест, флаг --info позволяет выводить больше информации
