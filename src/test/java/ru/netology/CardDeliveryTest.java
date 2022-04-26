@@ -1,5 +1,6 @@
 package ru.netology;
 
+import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
@@ -27,8 +28,8 @@ public class CardDeliveryTest {
         $("[class='checkbox__box']").click();
         $("button").click();
 
-        $(withText("Успешно")).shouldBe(visible, Duration.ofSeconds(15));
+        $("[data-test-id='notification'] [class='notification__title']").shouldBe(Condition.visible, Duration.ofSeconds(15));
         $(".notification__content").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("Встреча успешно забронирована"));
-        $("").click();
+
     }
 }
