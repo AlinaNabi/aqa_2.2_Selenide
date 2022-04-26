@@ -29,7 +29,7 @@ public class CardDeliveryTest {
         $("button").click();
 
         $("[data-test-id='notification'] [class='notification__title']").shouldBe(Condition.visible, Duration.ofSeconds(15));
-        $(".notification__content").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("Встреча успешно забронирована"));
+        $("[class='notification__content']").shouldHave(Condition.text("Встреча успешно забронирована"), Duration.ofSeconds(15));
 
     }
 }
