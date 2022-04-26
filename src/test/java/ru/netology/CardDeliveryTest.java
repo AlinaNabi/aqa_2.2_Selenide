@@ -8,9 +8,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.withText;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -28,8 +26,8 @@ public class CardDeliveryTest {
         $("[class='checkbox__box']").click();
         $("button").click();
 
-        $("[data-test-id='notification'] [class='notification__title']").shouldBe(Condition.visible, Duration.ofSeconds(15));
-        $("[class='notification__content']").shouldHave(Condition.text("Встреча успешно забронирована"), Duration.ofSeconds(15));
+        $("div.notification__title").shouldHave(exactText("Успешно!"), Duration.ofSeconds(15));
+        //  $("[class='notification__content']").shouldHave(Condition.text("Встреча успешно забронирована"), Duration.ofSeconds(15));
 
     }
 }
