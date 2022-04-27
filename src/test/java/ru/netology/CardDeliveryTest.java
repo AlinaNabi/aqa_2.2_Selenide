@@ -25,7 +25,7 @@ public class CardDeliveryTest {
         $("[name='name']").setValue("Анна Адамова");
         $("[name='phone']").setValue("+79991110022");
         $("[class='checkbox__box']").click();
-        $("button").click();
+        $(".button").click();
 
         $(withText("Успешно!")).shouldBe(visible, Duration.ofSeconds(15));
         //  $("[class='notification__content']").shouldHave(Condition.text("Встреча успешно забронирована"), Duration.ofSeconds(15));
